@@ -1,14 +1,16 @@
 type DisplayPropsType = {
   count: number;
+  maxValue: number;
+  startValue: number;
 };
 
-export const Display = ({ count }: DisplayPropsType) => {
-  const maxCount = 5;
+export const Display = ({ count, maxValue, startValue }: DisplayPropsType) => {
+  const maxCount = maxValue;
   return (
     <div
       className="display"
-      style={{ color: count === maxCount ? "red" : "black" }}>
-      {count}
+      style={{ color: count === maxCount ? "red" : "#5dd8f7" }}>
+      {startValue}
     </div>
   );
 };

@@ -1,44 +1,105 @@
+body {
+  background-color: #292d35;
+  min-height: 100vh;
+  color: #5dd8f7;
+}
+
 .App {
   display: flex;
   justify-content: center;
   box-sizing: border-box;
   margin-top: 150px;
+  color: #5dd8f7;
+  gap: 50px;
 }
 
 .counter {
+  color: #5dd8f7;
   min-height: 200px;
-  min-width: 250px;
-  background-color: rgb(53, 134, 255);
+  min-width: 350px;
+  background-color: #292d35;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
   font-size: 45px;
-  border: 3px solid rgb(162, 201, 255);
+  font-weight: bold;
+  border: 1px solid #61d6f5;
   border-radius: 10px;
+  padding: 20px 5px;
 }
 
 .display {
-  width: 180px;
-  height: 80px;
+  width: 280px;
+  height: 150px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 3px solid rgb(162, 201, 255);
+  border: 1px solid #5dd8f7;
   border-radius: 10px;
+  padding: 5px 20px;
 }
 
 .btn-block {
   display: flex;
-  width: 75%;
+  min-width: 280px;
   justify-content: space-around;
   gap: 5px;
+  border: 1px solid #5dd8f7;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .btn {
-  width: 90px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 100px;
   height: 35px;
-  border: 3px solid rgb(162, 201, 255);
+  border: none;
   border-radius: 10px;
+  background-color: #5dd8f7;
+  transition: background-color 0.3s;
+}
+
+.btn:active {
+  background-color: #292d35;
+}
+
+.btn:disabled {
+  background-color: #417180;
+}
+
+.controlCounter {
+  font-size: 24px;
+}
+
+.controlDisplay {
+  min-height: 150px;
+  justify-content: space-between;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px 5px;
+}
+
+input {
+  width: 70px;
+  height: 25px;
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+}
+
+input:focus {
+  outline: 3px solid #5dd8f7;
 }
