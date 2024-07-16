@@ -1,28 +1,57 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Button } from "./Button";
 
 type controlCounterPropsType = {
-  onSetValues: (start: number, max: number) => void;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  handleMaxValueChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleStartValueChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  setToLocalStorageHandler: () => void;
+  maxValue: number;
+  startValue: number;
+  error: string;
 };
 
-export const ControlCounter = ({ onSetValues }: controlCounterPropsType) => {
-  const [startValue, setStartValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(0);
-  const [error, setError] = useState("");
-
+export const ControlCounter = ({
+  maxValue,
+  startValue,
+  error,
+  handleSubmit,
+  handleMaxValueChange,
+  handleStartValueChange,
+  setToLocalStorageHandler,
+}: controlCounterPropsType) => {
   return (
-    <div className="controlCounter + counter">
-      <div className="display + controlDisplay">
-        <div className="titleBlock">
-          <span>max value: </span>
-          <span>start value:</span>
-        </div>
-        <div className="inputBlock">
-          <input type="number" value={maxValue} onChange={() => {}} />
-          <input type="number" value={startValue} onChange={() => {}} />
-        </div>
+    <div className="counter">
+      <div className="display">
+        <form onSubmit={handleSubmit}>
+          <div className="wrap">
+            <label htmlFor="maxValue">maxValue: </label>
+            <input
+              type="number"
+              onChange={handleMaxValueChange}
+              value={maxValue}
+              className={error ? "input-error" : ""}
+            />
+          </div>
+          <div className="wrap">
+            <label htmlFor="startValue">startValue: </label>
+            <input
+              type="number"
+              onChange={handleStartValueChange}
+              value={startValue}
+              className={error ? "input-error" : ""}
+            />
+          </div>
+        </form>
       </div>
-      <Button title={"set"} onClick={() => {}} />
+
+      <div className="btn-block">
+        <Button
+          title={"SET"}
+          onClick={setToLocalStorageHandler}
+          disabled={!!error}
+        />
+      </div>
     </div>
   );
 };

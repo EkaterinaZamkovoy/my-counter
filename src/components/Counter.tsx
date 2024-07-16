@@ -1,39 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./Button";
 import { Display } from "./Display";
 
 type CounterPropsType = {
-  startValue: number;
+  count: number;
   maxValue: number;
+  incrementCount: () => void;
+  resetCount: () => void;
+  error: string;
 };
 
-export const Counter = ({ startValue, maxValue }: CounterPropsType) => {
-  const minCount = startValue;
-  const maxCount = maxValue;
-  const stepCount = 1;
-
-  const [count, setCount] = useState<number>(startValue);
-
-  const onClickInc = () => {
-    if (count < maxCount) {
-      return setCount(count + stepCount);
-    }
-  };
-
-  const onClickReset = () => {
-    setCount(minCount);
-  };
-
+export const Counter = ({
+  count,
+  incrementCount,
+  maxValue,
+  resetCount,
+  error,
+}: CounterPropsType) => {
   return (
     <div className="counter">
-      <Display count={count} maxValue={maxValue} startValue={startValue} />
+      <Display count={count} maxValue={maxValue} error={error} />
       <div className="btn-block">
         <Button
-          onClick={onClickInc}
+          onClick={incrementCount}
           title="INC"
-          disabled={count === maxCount}
+          disabled={count === maxValue || !!error}
         />
-        <Button onClick={onClickReset} title="RESET" />
+        <Button onClick={resetCount} title="RESET" />
       </div>
     </div>
   );

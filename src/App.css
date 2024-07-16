@@ -41,6 +41,29 @@ body {
   padding: 5px 20px;
 }
 
+.display label {
+  font-size: 16px;
+}
+
+.display.error {
+  font-weight: bold;
+  min-height: 20px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: red;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+
+  &:first-of-type {
+    margin-bottom: 20px;
+  }
+}
+
 .btn-block {
   display: flex;
   min-width: 280px;
@@ -102,4 +125,12 @@ input {
 
 input:focus {
   outline: 3px solid #5dd8f7;
+}
+
+.input-error {
+  outline: 3px solid red;
+}
+
+.input-error:focus {
+  outline: 3px solid red;
 }
