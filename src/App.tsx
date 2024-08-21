@@ -8,7 +8,8 @@ function App() {
   const [count, setCount] = useState<number>(startValue);
   const [maxValue, setMaxValue] = useState<number>(0);
   const [error, setError] = useState<string>("");
-  const [isSettings, setIsSetting] = useState<boolean>(true);
+  const [message, setMessage] = useState<boolean>(false);
+  const [isSetDisabled, setIsSetDisabled] = useState<boolean>(true);
 
   //---
 
@@ -39,10 +40,14 @@ function App() {
 
   const handleMaxValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setMaxValue(+e.currentTarget.value);
+    setMessage(true);
+    setIsSetDisabled(false);
   };
 
   const handleStartValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setStartValue(+e.currentTarget.value);
+    setMessage(true);
+    setIsSetDisabled(false);
   };
 
   //---
@@ -52,6 +57,8 @@ function App() {
       localStorage.setItem("startValue", JSON.stringify(startValue));
       localStorage.setItem("maxValue", JSON.stringify(maxValue));
       setCount(startValue);
+      setMessage(false);
+      setIsSetDisabled(true);
     }
   };
 
@@ -76,8 +83,10 @@ function App() {
         startValue={startValue}
         maxValue={maxValue}
         error={error}
+        isSetDisabled={isSetDisabled}
       />
       <Counter
+        message={message}
         error={error}
         maxValue={maxValue}
         count={count}

@@ -9,12 +9,15 @@ type controlCounterPropsType = {
   maxValue: number;
   startValue: number;
   error: string;
+  isSetDisabled: boolean;
 };
 
 export const ControlCounter = ({
   maxValue,
   startValue,
   error,
+  isSetDisabled,
+
   handleSubmit,
   handleMaxValueChange,
   handleStartValueChange,
@@ -49,7 +52,7 @@ export const ControlCounter = ({
         <Button
           title={"SET"}
           onClick={setToLocalStorageHandler}
-          disabled={!!error}
+          disabled={isSetDisabled || !!error}
         />
       </div>
     </div>

@@ -53,6 +53,10 @@ body {
   color: red;
 }
 
+.display.message {
+  font-size: 18px;
+}
+
 .wrap {
   display: flex;
   justify-content: space-between;
