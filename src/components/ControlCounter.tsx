@@ -10,6 +10,7 @@ type controlCounterPropsType = {
   startValue: number;
   error: string;
   isSetDisabled: boolean;
+  isInputDisabled: boolean;
 };
 
 export const ControlCounter = ({
@@ -17,7 +18,7 @@ export const ControlCounter = ({
   startValue,
   error,
   isSetDisabled,
-
+  isInputDisabled,
   handleSubmit,
   handleMaxValueChange,
   handleStartValueChange,
@@ -34,6 +35,7 @@ export const ControlCounter = ({
               onChange={handleMaxValueChange}
               value={maxValue}
               className={error ? "input-error" : ""}
+              disabled={isInputDisabled}
             />
           </div>
           <div className="wrap">
@@ -43,6 +45,7 @@ export const ControlCounter = ({
               onChange={handleStartValueChange}
               value={startValue}
               className={error ? "input-error" : ""}
+              disabled={isInputDisabled}
             />
           </div>
         </form>

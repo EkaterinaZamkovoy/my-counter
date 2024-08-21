@@ -10,6 +10,7 @@ function App() {
   const [error, setError] = useState<string>("");
   const [message, setMessage] = useState<boolean>(false);
   const [isSetDisabled, setIsSetDisabled] = useState<boolean>(true);
+  const [isInputDisabled, setIsInputDisabled] = useState<boolean>(false);
 
   //---
 
@@ -24,6 +25,7 @@ function App() {
 
   const resetCount = () => {
     setCount(startValue);
+    setIsInputDisabled(false);
   };
 
   //---
@@ -59,6 +61,7 @@ function App() {
       setCount(startValue);
       setMessage(false);
       setIsSetDisabled(true);
+      setIsInputDisabled(true);
     }
   };
 
@@ -76,6 +79,7 @@ function App() {
   return (
     <div className="App">
       <ControlCounter
+        isInputDisabled={isInputDisabled}
         handleSubmit={() => {}}
         handleMaxValueChange={handleMaxValueChange}
         handleStartValueChange={handleStartValueChange}

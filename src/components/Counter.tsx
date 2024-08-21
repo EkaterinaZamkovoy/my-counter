@@ -33,7 +33,11 @@ export const Counter = ({
           title="INC"
           disabled={count === maxValue || !!error || message}
         />
-        <Button onClick={resetCount} title="RESET" />
+        <Button
+          onClick={resetCount}
+          title="RESET"
+          disabled={!!error || message}
+        />
       </div>
     </div>
   );
